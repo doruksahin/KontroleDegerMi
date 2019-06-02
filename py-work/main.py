@@ -14,5 +14,5 @@ def parse(text):
     filtered = stopper.remove_stops(stemmed)
     return filtered
 
-text = "ama yani şimdi şöyle de bir olay var yani "
+text = "tamam iyi de ama yani şimdi şöyle de bir olay var yani "
 print((parse(text)))

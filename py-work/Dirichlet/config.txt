@@ -1,0 +1,7 @@
+criteria = c_v
+max_iteration = 1
+passes = 1
+max_topic = 4
+num_words = 20
+stem = Yes
+language = tr

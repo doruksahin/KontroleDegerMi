@@ -1,0 +1,14 @@
+config.txt uzerinden dil ayari olarak Tr ya da En yazin.
+Program calistirildiginda extracted klasorunde olan tum dosyalari ayri ayri isleyecektir.
+Dil secenegini tr olarak girdiginizde extracted klasorundeki verilerin hepsi tr'ye gore islenecektir. Yani Ingilizce isleri Turkce isler bitince yapmalisiniz veya tam tersi.
+Dynamic stopwordsleri kendiniz ekleyebilirsiniz. (english_dynamic_stopwords.txt ve turkish_dynamic_stopwords.txt)
+
+Config.txt
+
+criteria'yi c_v olarak birakin.
+max_iteration ve passes degeri arttikca elde edilen veri daha iyi olur fakat 25 yapabilirsiniz.
+genelde topic sayisi arttikca sonuclar daha iyi cikmaktadir. (Bunu program bittiginde klasor icinde cizili grafikte gorebilirsiniz.) Topic sayisini programa gore ayarlamalisiniz.
+num_words de ayni sekilde input'a gore ayarlanmalidir. 10-20 arasi idealdir.
+stem Yes veya No olarak isaretlenmelidir. Yes olarak isaretlenirse program once normal calisir, daha sonra kelimelerin koklerini bularak topic cikarir. (gidecegim sozcugunu git olarak cevirip isler ornegin)
+language tr veya en olarak verilmelidir. Turkce ve Ingilizce dil secimi icin bunu degistirmelisiniz.
+

@@ -44,9 +44,9 @@
 ####            + ' | Ending Index = ' + str(token.getEnd())
 ####        )
 ####
-####def shutdown():
+####def _shutdown():
 ####	jp.shutdownJVM()
 ####
-####atexit.register(shutdown)
+####atexit.register(_shutdown)
 ####
 ####tokenize("Prof. Dr. Veli Davul açıklama yaptı. Kimse %6.5'lik enflasyon oranını beğenmemiş!")

@@ -1,6 +1,7 @@
 import nltk
 
 _stop_words = set(nltk.corpus.stopwords.words("turkish"))
+_stop_words.update([""])
 _stop_words.update(["olan", "bir", "aşağı", "hangi", "şimdi", "şöyle", "böyle"])
 _stop_words.update(["tamam", "iyi", "ta", "mı", "mi"])
 

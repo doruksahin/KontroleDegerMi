@@ -28,10 +28,10 @@ morphology = TurkishMorphology.createWithDefaults()
 # Please refer to the official Wiki to correctly create a custom dictionary!
 
 # Dummy word to work on
-word = 'kitabımızsa'
+word = 'kapıcılardakileri'
 
 # Analyzing the word
-results = morphology.analyze(word).analysisResults
+results = morphology.analyze(word).getAnalysisResults()
 
 # Printing the morphology analysis results
 for i, result in enumerate(results):

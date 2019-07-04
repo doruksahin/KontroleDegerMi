@@ -17,7 +17,7 @@ def perform_preprocessing(text):
     tokens = stopper.remove_stops(tokens)
     return tokens
 
-text = "kitaplıktaki kitabı getirdi"
+text = "bu bir yazıdır"
 print(perform_preprocessing(text))
 
 jp.shutdownJVM()

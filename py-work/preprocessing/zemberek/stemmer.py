@@ -4,20 +4,20 @@ import jpype as jp
 import atexit
 import string
 
-_initted = False
+init = False
 TurkishMorphology = None
 RootLexicon = None
 Paths = None
 morphology = None
 
 def stem_word(word):
-    global _initted
+    global init
     global TurkishMorphology
     global RootLexicon
     global Paths
     global morphology
 
-    if _initted == False:
+    if init == False:
         # Import required Java classes
         TurkishMorphology = jp.JClass('zemberek.morphology.TurkishMorphology')
         RootLexicon = jp.JClass('zemberek.morphology.lexicon.RootLexicon')
@@ -25,7 +25,7 @@ def stem_word(word):
 
         # Instantiating the morphology class with the default RootLexicon
         morphology = TurkishMorphology.createWithDefaults()
-        _initted = True
+        init = True
     
     # Obtaining some results
     results = morphology.analyze(word).getAnalysisResults()

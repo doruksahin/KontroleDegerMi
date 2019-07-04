@@ -17,7 +17,7 @@ def perform_preprocessing(text):
     tokens = stopper.remove_stops(tokens)
     return tokens
 
-text = "bu bir yazıdır"
+text = "Çiftlik Bank davasında mahkeme iki sanığın tahliyesine karar verdi. Böylece dava kapsamında tutuklu sanık kalmadı"
 print(perform_preprocessing(text))
 
 jp.shutdownJVM()

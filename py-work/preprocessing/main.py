@@ -16,3 +16,9 @@ def parse(text):
 
 text = "   tamm    iyi de .ama yani; şimdi \"şöyle\" de bir olay var yani "
 print((parse(text)))
+print((parse(text)))
+print((parse(text)))
+print((parse(text)))
+print((parse(text)))
+print((parse(text)))
+print((parse(text)))

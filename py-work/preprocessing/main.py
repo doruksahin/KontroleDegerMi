@@ -17,7 +17,7 @@ def perform_preprocessing(text):
     tokens = stopper.remove_stops(tokens)
     return tokens
 
-text = " proje raporlarindaki 3 gun hakkiniz ile odevler icin olan 3 gun hakkiniz birbirinden bagimsiz.Proje raporlarinda gec gonderirseniz grupca sahip oldugunuz 3 gunluk hakkiniz azalmis olacak (grubun hepsinden yani)."
+text = "kitaplıktaki kitabı getirdi"
 print(perform_preprocessing(text))
 
 jp.shutdownJVM()

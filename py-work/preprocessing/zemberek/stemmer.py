@@ -10,6 +10,8 @@ RootLexicon = None
 Paths = None
 morphology = None
 
+#NOT:
+#Kitabı -> kitab olarak alıyor. Son harfi yumuşak bırakıyor. Düzeltilebilir.
 def stem_word(word):
     global init
     global TurkishMorphology

@@ -10,7 +10,7 @@ import jpype as jp
 ZEMBEREK_PATH = '../../bin/zemberek-full.jar'
 
 # Start the JVM
-jp.startJVM(jp.getDefaultJVMPath(), 'ea', '-Djava.class.path=%s' % (ZEMBEREK_PATH))
+jp.startJVM(jp.getDefaultJVMPath(), '-ea', '-Djava.class.path=%s' % (ZEMBEREK_PATH))
 
 # Import required Java classes
 TurkishSentenceExtractor = jp.JClass('zemberek.tokenization.TurkishSentenceExtractor')

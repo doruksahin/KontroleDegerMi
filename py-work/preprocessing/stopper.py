@@ -3,7 +3,7 @@ import nltk
 _stop_words = set(nltk.corpus.stopwords.words("turkish"))
 _stop_words.update([""])
 _stop_words.update(["olan", "bir", "aşağı", "hangi", "şimdi", "şöyle", "böyle"])
-_stop_words.update(["tamam", "iyi", "ta", "mı", "mi", "ol"])
+_stop_words.update(["tamam", "iyi", "ta", "mı", "mi", "ol", "yap", "et"])
 
 def is_stop(word):
     if word in _stop_words:

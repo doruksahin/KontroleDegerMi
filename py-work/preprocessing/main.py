@@ -17,7 +17,7 @@ def perform_preprocessing(text):
     tokens = stopper.remove_stops(tokens)
     return tokens
 
-text = "Çiftlik Bank davasında mahkeme iki sanığın tahliyesine karar verdi. Böylece dava kapsamında tutuklu sanık kalmadı"
+text = "Sonuçların açıklandığı 24 haziranda 12ye kadar onay red işlemi yapılıyormuş.. Bundan haberi olmayanlar mağdur oldu. Bu mağduriyet giderilmelidir.. #2019ildışıiptalhakkı"
 print(perform_preprocessing(text))
 
 jp.shutdownJVM()

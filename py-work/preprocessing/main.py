@@ -17,7 +17,7 @@ def perform_preprocessing(text):
     tokens = stopper.remove_stops(tokens)
     return tokens
 
-text = "Hocam 3 gün geçiktirdiğimizde 3 kişilik bi grup ta herkezten bigün mü siliencek (1 * 3  = 3) yoksa herkesten mi 3 gün silinecek??"
+text = " proje raporlarindaki 3 gun hakkiniz ile odevler icin olan 3 gun hakkiniz birbirinden bagimsiz.Proje raporlarinda gec gonderirseniz grupca sahip oldugunuz 3 gunluk hakkiniz azalmis olacak (grubun hepsinden yani)."
 print(perform_preprocessing(text))
 
 jp.shutdownJVM()

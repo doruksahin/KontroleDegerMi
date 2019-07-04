@@ -1,5 +1,3 @@
-from googler import google_search
-
 import tr_utils
 import tokenizer, normalizer, stemmer, stopper
 

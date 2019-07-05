@@ -75,34 +75,53 @@ def close_window():
 	browser.switch_to_window(browser.window_handles[len(browser.window_handles) - 1])
 
 
+JSON_PATH = 'output/teyit-org.json'
+import os
+try:
+	os.remove(JSON_PATH)
+except:
+	pass
+
 if __name__ == '__main__':
+	with open(JSON_PATH, 'a') as f:
+		f.write("[\n")
+
 	MAIN_URL = 'https://teyit.org/konu/analiz/page/'
-	RESULT_FILE_PATH = 'teyit-org.json'
-	claims = []
-	browser = init_driver(headless=False)
+	browser = init_driver(headless=True)
 	
 	for i in range(1, 100):
 		url = MAIN_URL+str(i)
 		open_page(browser, url)
 		print(url)
-		print(browser.current_url)
-		print("======")
 		for article in wait_until_find_xpaths("//div[@id='cb-content']/div/article", browser):
-			open_new_window(wait_until_find_xpath(".//a", article).get_attribute('href'))
 			try:
-				claim_blob = {}
+				open_new_window(wait_until_find_xpath(".//a", article).get_attribute('href'))
+			except:
+				break
+
+			claim_blob = {}
+			try:
 				claim = wait_until_find_xpath("//div/div[@class='iddia_text']", browser).text
 				claim = claim[claim.find(":")+2:]
 				claim_blob['claim'] = claim
 				claim_blob['acknowledge'] =  wait_until_find_xpath("//div/div[@class='iddia_title']", browser).text
-				claim_blob['date'] = wait_until_find_xpath("//time", browser).get_attribute('datetime')
-				claims.append(claim_blob)
 			except:
-				pass
+				claim_blob['claim'] = None
+				claim_blob['acknowledge'] = None
+		
+			claim_blob['claim_title'] = wait_until_find_xpath("//div[contains(@class, 'cb-entry-header') and contains(@class, 'cb-meta') and contains(@class, 'clearfix')]/h1", browser).text
+			
+			claim_blob['date'] = wait_until_find_xpath("//time", browser).get_attribute('datetime')
+
+			with open(JSON_PATH, 'a') as f:
+				f.write(json.dumps(claim_blob))
+				f.write(',\n')
+
+
 			close_window()
 			
-	with open(RESULT_FILE_PATH, 'w') as outfile:
-		json.dump(claims, outfile, indent=4)
+	with open(JSON_PATH, 'a') as f:
+		f.write("]")
 
 
 

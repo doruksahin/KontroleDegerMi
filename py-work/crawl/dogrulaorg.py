@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -7,6 +10,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 import json
+from urllib import unquote
+
+YUZDE_SIFIR = 'https://dogrula.org/wp-content/uploads/2018/10/yÃ¼zde-sÄ±fÄ±r-1024x388.png'
+YUZDE_YUZ = 'https://dogrula.org/wp-content/uploads/2018/12/yÃ¼zde-100.png'
+
 
 def init_driver(headless=True, disable_gpu=False, enable_adblock=True, timeout=120, maximize=False):
 	options = Options()
@@ -75,35 +83,42 @@ def close_window():
 	browser.switch_to_window(browser.window_handles[len(browser.window_handles) - 1])
 
 
+JSON_PATH = 'output/dogrula-org.json'
+import os
+try:
+	os.remove(JSON_PATH)
+except:
+	pass
+
 if __name__ == '__main__':
+	with open(JSON_PATH, 'a') as f:
+		f.write("[\n")
+
 	MAIN_URL = 'https://dogrula.org/kategori/genel/page/'
-	RESULT_FILE_PATH = 'dogrula-org.json'
-	claims = []
-	browser = init_driver(headless=False)
-	
+	browser = init_driver(headless=True)
+
 	for i in range(1, 100):
 		url = MAIN_URL+str(i)
 		open_page(browser, url)
 		print(url)
-		print(browser.current_url)
-		print("======")
-		for article in wait_until_find_xpaths("//div[@id='cb-content']/div/article", browser):
-			open_new_window(wait_until_find_xpath(".//a", article).get_attribute('href'))
+		for article in wait_until_find_xpaths("//*[@class='td-block-span6']/div", browser):
+			claim_blob = {}
+			claim_blob['claim_title'] =  wait_until_find_xpath("./h3/a", article).get_attribute('title')
+			claim_blob['date'] = wait_until_find_xpath("./div[@class='meta-info']/span[@class='td-post-date']/time", article).get_attribute('datetime')
+			open_new_window(wait_until_find_xpath("./h3/a", article).get_attribute('href'))
 			try:
-				claim_blob = {}
-				claim = wait_until_find_xpath("//div/div[@class='iddia_text']", browser).text
-				claim = claim[claim.find(":")+2:]
-				claim_blob['claim'] = claim
-				claim_blob['acknowledge'] =  wait_until_find_xpath("//div/div[@class='iddia_title']", browser).text
-				claim_blob['date'] = wait_until_find_xpath("//time", browser).get_attribute('datetime')
-				claims.append(claim_blob)
+				claim_blob['claim'] = wait_until_find_xpath("//*[contains(@class, 'td-post-content') and contains(@class, 'td-pb-padding-side')]", browser).text
 			except:
-				pass
+				print("Error: {}\n".format(browser.current_url))
 			close_window()
-			
-	with open(RESULT_FILE_PATH, 'w') as outfile:
-		json.dump(claims, outfile, indent=4)
+			# claim_blob['date'] = wait_until_find_xpath("//*[contains(@class, 'entry-date') and contains(@class, 'updated') and contains(@class, 'td-module-date')]", browser).get_attribute('datetime')
 
+			with open(JSON_PATH, 'a') as f:
+				f.write(json.dumps(claim_blob))
+				f.write(',\n')
+
+	with open(JSON_PATH, 'a') as f:
+		f.write("]")
 
 
 		

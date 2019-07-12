@@ -1,8 +1,8 @@
-###---OUTPUT FORMATS ---
+# ---OUTPUT FORMATS ---
 
 
-# malumatfurus: 		claim - claim_title - date
-# teyitorg:		claim - claim_title - date - acknowledge
-# dogrulaorg:		claim - claim_title - date
-# dorgulukpayi:		claim - date 						(claimle claim_title sadece boslukla ayriliyor.)
-# gununyalanlari:		context - claim - date					(claim_title'a karsilik geliyor)
+ malumatfurus: 		claim - claim_title - date
+ teyitorg:		claim - claim_title - date - acknowledge
+ dogrulaorg:		claim - claim_title - date
+ dorgulukpayi:		claim - date 						(claimle claim_title sadece boslukla ayriliyor.)
+ gununyalanlari:		context - claim - date					(claim_title'a karsilik geliyor)

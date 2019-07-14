@@ -2,7 +2,7 @@ g_posTypes = None
 g_fullWords = None
 g_stemmedWords = None
 
-def read_data_set():
+def _read_data_set():
     global g_posTypes
     global g_fullWords
     global g_stemmedWords
@@ -38,11 +38,26 @@ def get_pos(token):
     else:
         return "_"
 
+_read_data_set()
+
 def convert_pos(tokens):
     return [get_pos(token) for token in tokens]
 
-read_data_set()
+def get_column_names():
+    row = []
+    for column in g_posTypes:
+        row.append(column)
+    row.sort()
+    return row
 
-deneme = ['sonuç', 'açık', '24', 'haziran', '12', 'kadar', 'onay', 'işlem', 'haber', 'mağdur', 'mağduriyet', 'gider']
-for item in deneme:
-    print(item, ":", get_pos(item))
+def extract_features(tokens):
+    tokens = convert_pos(tokens)
+    row = []
+    for column in get_column_names():
+        count = 0
+        for token in tokens:
+            if token == column:
+                count = count + 1
+        row.append(count)
+    return row
+    

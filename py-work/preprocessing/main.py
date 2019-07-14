@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import tokenizer, zemberek.normalizer, zemberek.stemmer, stopper
 
 import locale
@@ -16,6 +19,7 @@ def perform_preprocessing(text):
     tokens = zemberek.stemmer.stem_words(tokens)
     tokens = stopper.remove_stops(tokens)
     return tokens
+
 
 text = "Sonuçların açıklandığı 24 haziranda 12ye kadar onay red işlemi yapılıyormuş.. Bundan haberi olmayanlar mağdur oldu. Bu mağduriyet giderilmelidir.. #2019ildışıiptalhakkı"
 print(perform_preprocessing(text))

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import tokenizer, zemberek.normalizer, zemberek.stemmer, stopper
 
 import locale

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import nltk
 
 _stop_words = set(nltk.corpus.stopwords.words("turkish"))

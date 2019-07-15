@@ -6,7 +6,6 @@ locale.setlocale(locale.LC_ALL,'en_US.UTF-8')
 import tokenizer, zemberek.normalizer, zemberek.stemmer, stopper
 
 def perform_preprocessing(text):
-	zemberek.normalizer.init()
 	text = zemberek.normalizer.normalize(text)
 	tokens = tokenizer.tokenize(text)
 	tokens = stopper.remove_stops(tokens)

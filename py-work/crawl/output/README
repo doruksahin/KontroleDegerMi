@@ -1,3 +1,6 @@
+python arrange.py "json"
+python arrange.py "txt"
+
 # ---OUTPUT FORMATS ---
 
 malumatfurus: 		claim - claim_title - date

@@ -23,6 +23,8 @@ def main():
         pass
 
 def preprocess(input_file, output_file):
+    zemberek.normalizer.init()
+    
     file = open(input_file, "r")
     content = file.read()
     data = json.loads(content)

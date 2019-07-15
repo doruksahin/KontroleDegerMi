@@ -1,0 +1,12 @@
+== TEST FEATURELARI İÇİN ==
+python main.py "preprocess" test_input.txt test_out.json
+python main.py "extract-feature" test_out.json test_feature.csv
+
+
+== TRAIN FEATURELARI İÇİN ==
+python main.py "preprocess" train_input.txt train_out.json
+python main.py "extract-feature" train_out.json train_feature.csv
+
+
+== BAYES CLASSIFIER'A SOKMAK İÇİN ==
+python classifier.py train_feature.csv test_feature.csv

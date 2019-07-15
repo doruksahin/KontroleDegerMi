@@ -87,22 +87,12 @@ def train_ner():
 	ner.saveModelAsText(modelRoot)
 
 def ner_tagging(sentence):
-	global init
-	global TurkishMorphology
-	global Paths
-	global NerDataSet
-	global PerceptronNer
-	global PerceptronNerTrainer
-	global AnnotationStyle
-	global Files
-	global trainPath
-	global testPath
-	global modelRoot
-	global morphology
-	global ner
-
 	result = ner.findNamedEntities(sentence)
 	namedEntities = result.getNamedEntities()
+	result_arr = []
 
 	for namedEntity in namedEntities:
-		print(namedEntity)
+		result = namedEntity.toString().split(" ")[0][1:]
+		result_arr.append(result)
+
+	return result_arr

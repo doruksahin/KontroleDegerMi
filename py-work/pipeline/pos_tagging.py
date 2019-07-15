@@ -50,7 +50,7 @@ def get_column_names():
     row.sort()
     return row
 
-def extract_features(tokens):
+def extract_feature(tokens):
     tokens = convert_pos(tokens)
     row = []
     for column in get_column_names():

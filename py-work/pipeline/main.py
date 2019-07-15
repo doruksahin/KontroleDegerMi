@@ -1,6 +1,9 @@
 import sys
 import json
 import jpype as jp
+import length, ner_tagging, pos_tagging
+import csv
+import zemberek.normalizer
 
 # Start the JVM
 ZEMBEREK_PATH = 'zemberek/bin/zemberek-full.jar'
@@ -32,8 +35,25 @@ def preprocess(input_file, output_file):
     with open(output_file, "w") as outfile:
         json.dump(result, outfile, indent=4)
 
+
 def extract_feature(input_file, output_file):
-    pass
+    zemberek.nertagger.init_libs()
+
+    f = open(input_file, 'r')
+    json_file = json.load(f)
+    pos_columns = pos_tagging.get_column_names()
+    with open(output_file, mode='w') as feature_file:
+        fieldnames = ['length', 'LOCATION', 'ORGANIZATION', 'PERSON', 'O'] + pos_columns
+        writer = csv.writer(feature_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(fieldnames)
+        count = 0
+        for tokens in json_file:
+            length_vector = length.extract_feature(tokens)
+            ner_vector = ner_tagging.extract_feature(tokens) 
+            pos_vector = pos_tagging.extract_feature(tokens)
+            writer.writerow(length_vector + ner_vector + pos_vector)
+            print(count)
+            count = count + 1
 
 if __name__ == '__main__':
     main()

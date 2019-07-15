@@ -1,2 +1,2 @@
 def extract_feature(tokens):
-    return len(tokens)
+    return [len(tokens)]

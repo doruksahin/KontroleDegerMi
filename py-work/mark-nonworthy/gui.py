@@ -4,8 +4,9 @@ import json
 import csv
 import os
 
-output_file = "output.json"
-input_file = "test_input.txt"
+
+input_file = "{}".format(sys.argv[1])
+output_file = "{}_output.json".format(input_file.split(".")[0])
 
 tagged_list = []
 mark_list = []
@@ -75,18 +76,9 @@ def readfile():
 		except:
 			pass
 
-	print(mark_list)
-
-	
 
 
 if __name__ == '__main__':
-	'''
-	input_file = sys.argv[0]
-	marked_file = sys.argv[1]
-	output_file = sys.argv[2]
-	'''
-
 	root = Tk()
 	readfile()
 

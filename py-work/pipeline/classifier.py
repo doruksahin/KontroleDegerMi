@@ -4,7 +4,11 @@ from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestRegressor
 from pprint import pprint
+import json
 
+# for perfromance measue
+with open("test_input.txt", "r") as f:
+	test_twits = json.load(f)
 
 train_data = []
 is_claim = []
@@ -52,7 +56,8 @@ model.fit(train_data, is_claim)
 predicted = model.predict(test_data)
 
 for i, pred in enumerate(predicted):
-	print("{}-{}".format(i, pred))
+	if pred == 1:
+		print("{}-{}-{}".format(i, pred, test_twits[i]))
 
 print(type(predicted))
 

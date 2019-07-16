@@ -9,4 +9,4 @@ python main.py "extract-feature" train_out.json train_feature.csv
 
 
 == BAYES CLASSIFIER'A SOKMAK İÇİN ==
-python classifier.py train_feature.csv test_feature.csv
+python classifier.py

@@ -48,7 +48,7 @@ def get_column_names():
     for column in g_posTypes:
         row.append(column)
     row.sort()
-    return row
+    return row[:len(row)-1] # sonuncu olan "_" çıkarılıyor
 
 def extract_feature(tokens):
     tokens = convert_pos(tokens)

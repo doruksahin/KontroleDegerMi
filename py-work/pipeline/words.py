@@ -1,26 +1,33 @@
-g_all_words = None
-g_word_count = None
+import json
 
-def prepare_data_set(tokens_array):
-    global g_all_words
-    global g_word_count
+g_all_words = []
+#g_word_count = None
+
+def prepare_words_list(tokens_array):
     all_words = set()
-    g_word_count = dict()
+    word_count = dict()
     for tokens in tokens_array:
         for token in tokens:
-            if token in g_word_count:
-                g_word_count[token] = g_word_count[token] + 1
+            if token in word_count:
+                word_count[token] = word_count[token] + 1
             else:
-                g_word_count[token] = 0
+                word_count[token] = 0
             all_words.add(token)
-    g_all_words = []
+    words = []
     for item in all_words:
-        g_all_words.append(item)
-    g_all_words = [word for word in g_all_words if g_word_count[word] > 5]
-    g_all_words.sort()
-    g_word_count = {key:val for key, val in g_word_count.items() if val > 5}
+        words.append(item)
+    words = [word for word in all_words if word_count[word] > 5]
+    words.sort()
+    with open('words.txt', 'w') as f:
+        json.dump(words, f)
 
-def extract_features(tokens):
+with open('words.txt', 'r') as f:
+    g_all_words = json.load(f)
+
+def get_column_names():
+    return g_all_words
+
+def extract_feature(tokens):
     result = []
     for word in g_all_words:
         count = 0

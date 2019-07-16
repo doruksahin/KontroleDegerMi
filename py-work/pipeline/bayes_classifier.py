@@ -3,6 +3,7 @@ from sklearn import datasets
 from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVC
 from pprint import pprint
 import json
 

@@ -1,0 +1,11 @@
+[LibSVM]              precision    recall  f1-score   support
+
+           0       0.89      0.98      0.93       208
+           1       0.38      0.11      0.17        27
+
+    accuracy                           0.88       235
+   macro avg       0.63      0.54      0.55       235
+weighted avg       0.83      0.88      0.85       235
+
+[[203   5]
+ [ 24   3]]

@@ -1,12 +1,14 @@
 == TEST FEATURELARI İÇİN ==
 python main.py "preprocess" test_input.txt test_out.json
-python main.py "extract-feature" test_out.json test_feature.csv
+python main.py "extract-feature" test_out.json test_feature_claim.csv
+python main.py "extract-feature" test_out.json test_feature_non_claim.csv
 
 
 == TRAIN FEATURELARI İÇİN ==
 python main.py "preprocess" train_input.txt train_out.json
-python main.py "extract-feature" train_out.json train_feature.csv
+python main.py "extract-feature" train_out.json train_feature_claim.csv
+python main.py "extract-feature" train_out.json train_feature_non_claim.csv
 
 
 == BAYES CLASSIFIER'A SOKMAK İÇİN ==
-python classifier.py
+python bayes_classifier.py test_input.json test_feature.csv expected.json train_feature_claim.csv train_feature_non_claim.csv

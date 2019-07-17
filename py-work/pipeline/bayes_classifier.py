@@ -7,13 +7,20 @@ from sklearn.svm import SVC
 from pprint import pprint
 import json
 import random
+import sys
+
+test_input = sys.argv[1]
+test_feature = sys.argv[2]
+expected_data = sys.argv[3]
+train_feature_claim = sys.argv[4]
+train_feature_not_claim = sys.argv[5]
 
 # for testing
-with open("test_input.json", "r") as f:
+with open(test_input, "r") as f:
 	test_twits = json.load(f)
 
 # for perfromance measue
-with open("expected.json", "r") as f:
+with open(expected_data, "r") as f:
 	expected_data = json.load(f)
 
 expected_output = []
@@ -22,7 +29,7 @@ for x in expected_data:
 
 train_data = []
 is_claim = []
-with open("train_feature_claim.csv", "r") as f:
+with open(train_feature_claim, "r") as f:
 	reader = csv.reader(f, delimiter="\t")
 	
 	flag = True
@@ -35,7 +42,7 @@ with open("train_feature_claim.csv", "r") as f:
 		train_data.append(mini_train_data)
 		is_claim.append(1)
 
-with open("train_feature_not_claim.csv", "r") as f:
+with open(train_feature_not_claim, "r") as f:
 	reader = csv.reader(f, delimiter="\t")
 	
 	flag = True
@@ -49,7 +56,7 @@ with open("train_feature_not_claim.csv", "r") as f:
 		is_claim.append(0)
 
 test_data = []
-with open("test_feature.csv", "r") as f:
+with open(test_feature, "r") as f:
 	reader = csv.reader(f, delimiter="\t")
 
 	flag = True

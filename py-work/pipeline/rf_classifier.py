@@ -61,7 +61,7 @@ with open("test_feature.csv", "r") as f:
 		mini_test_data = [int(f) for f in line[0].split(",")]
 		test_data.append(mini_test_data)
 
-model = RandomForestRegressor(n_estimators = 1000, random_state = 42)
+model = RandomForestRegressor(n_estimators = 1000, random_state = 42, verbose=100000)
 model.fit(train_data, is_claim)
 predicted = model.predict(test_data)
 

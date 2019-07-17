@@ -61,7 +61,7 @@ with open("test_feature.csv", "r") as f:
 		mini_test_data = [int(f) for f in line[0].split(",")]
 		test_data.append(mini_test_data)
 		
-model = SVC(kernel='linear', random_state=0)
+model = SVC(kernel='linear', random_state=0, verbose=10000)
 model.fit(train_data, is_claim)
 predicted = model.predict(test_data)
 

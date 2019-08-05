@@ -16,7 +16,7 @@ python teyitorg.py
 ```
 python arrange.py <DOSYA_FORMATI>  
 ```
-- Bu komut ile tüm veriler bir araya getirilir. Dosya formatı argümanına göre json veya txt olarak kaydedilir.
+- Bu komut ile tüm veriler bir araya getirilir. Dosya formatı argümanına göre json veya txt olarak kaydedilir. claims adında sonuçlar output klasörüne kaydedilir.
 
 
 ## Preprocessing ve Feature Extraction İşlemleri
@@ -29,11 +29,11 @@ python main.py "extract-feature" test_out.json test_feature_non_claim.csv
 
 #### Train Features
 ```
-python main.py "preprocess" train_input.txt train_out.json 						-> train_input.txt claims.txt'den geliyor.  
+python main.py "preprocess" train_input.txt train_out.json 						
 python main.py "extract-feature" train_out.json train_feature_claim.csv  
 python main.py "extract-feature" train_out.json train_feature_non_claim.csv  
 ```
-
+- train_input.txt claims.txt'den geliyor. Crawl edilen veriler iddia olarak, twitter API ile çekilen veriler iddia değil olarak varsayılmıştır.
 
 #### Bayes Classifier
 ```

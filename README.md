@@ -19,41 +19,47 @@ python arrange.py <DOSYA_FORMATI>
 - Bu komut ile tüm veriler bir araya getirilir. Dosya formatı argümanına göre json veya txt olarak kaydedilir.
 
 
-- pipeline klasöründe preprocessing ve feature extraction için 
-- == TEST FEATURELARI İÇİN ==  
-- python main.py "preprocess" test_input.txt test_out.json 						  
-- python main.py "extract-feature" test_out.json test_feature_claim.csv  
-- python main.py "extract-feature" test_out.json test_feature_non_claim.csv  
+## Preprocessing ve Feature Extraction İşlemleri
+#### Test Features
+```
+python main.py "preprocess" test_input.txt test_out.json 						  
+python main.py "extract-feature" test_out.json test_feature_claim.csv  
+python main.py "extract-feature" test_out.json test_feature_non_claim.csv  
+```
+
+#### Train Features
+```
+python main.py "preprocess" train_input.txt train_out.json 						-> train_input.txt claims.txt'den geliyor.  
+python main.py "extract-feature" train_out.json train_feature_claim.csv  
+python main.py "extract-feature" train_out.json train_feature_non_claim.csv  
+```
 
 
-- == TRAIN FEATURELARI İÇİN ==  
-- python main.py "preprocess" train_input.txt train_out.json 						-> train_input.txt claims.txt'den geliyor.  
-- python main.py "extract-feature" train_out.json train_feature_claim.csv  
-- python main.py "extract-feature" train_out.json train_feature_non_claim.csv  
+#### Bayes Classifier
+```
+python bayes_classifier.py test_input.json test_feature.csv expected.json train_feature_claim.csv train_feature_non_claim.csv  
+```
+
+#### Baseline Karşılaştırması İçin Çeviri İşlemi
+- mtranslate klasöründe aşağıdaki komut çalıştırıldığında <DOSYA_ADI>_translated.json şeklinde ingilizceye çevrilmiş formatta kaydediliyor. 
+```
+python main.py <DOSYA_ADI>
+```
+
+#### Baseline API (ClaimBuster)
+```
+python claimbuster_api.py <DOSYA_ADI> <CIKTI_ADI>  
+python compare_baseline.py claimbuster_results.json expected.json
+```
+- İlk komut çalıştığında çıktı olarak \["metin", "is_checkworty"\] şeklinde json oluşmaktadır.
+- İkinci komut claimbuster sonucunun etiketlenmiş veriler (expected.json) üzerinde başarısını bulmaktadır.
 
 
-- Bayes classifier'a sokarak başarı oranımızı ekrana bastık.  
-- == BAYES CLASSIFIER'A SOKMAK İÇİN ==  
-- python bayes_classifier.py test_input.json test_feature.csv expected.json train_feature_claim.csv train_feature_non_claim.csv  
-
-
-- ===== Baseline kontrolü =====  
-- mtranslate klasöründe   
-- python main.py <DOSYA_ADI> komutu çalıştırıldığında <DOSYA_ADI>_translated.json şeklinde ingilizceye çevrilmiş formata dönüştürülüyor.  
-- Bu çıktıyı claimbuster klasörüne koyuyoruz.  
-- claimbuster klasöründe  
--
-- python claimbuster_api.py <DOSYA_ADI> <CIKTI_ADI>  
-- çıktı formatı jsonlardan oluşmaktadır. bir json bloğunun içinde "tweet", "is_checkworthy" attributelari var.  
--
-- python compare_baseline.py claimbuster_results.json expected.json komutu ile baseline başarı oranını ekrana bastık.  
-- claimbuster_results.json'ı yukarıdaki claimbuster klasöründen elde ettik.  
-- expected.json için işaretleme yaptık- 
-
-- ====== İŞARETLEME İŞLEMİ ======  
-- mark-nonworthy klasöründe  
-- python split_files.py <DOSYA_ADI>   
-- komutunu çalıştırdığımızda dosya "ali.json", "said.json", "doruk.json" şeklinde 3'e bölünüyor.  
-
-- python gui.py <DOSYA_ADI>  
-- komutu ile işaretleme arayüzüne giriyoruz ve işaretleme bitince kaydedip çıkıyoruz. Kaydedip çıkınca dosya_adi_output.json şeklinde bir çıktımız oluyor.  
+#### Etiketleme İşlemi
+```
+python split_files.py <DOSYA_ADI>  
+python gui.py <DOSYA_ADI> 
+```
+- mark-nonworthy klasöründe ilk komut çalıştığında dosya "ali.json", "said.json", "doruk.json" olarak üçe bölünüyor.
+- İkinci komut ile etiketleme arayüzü açılmaktadır.
+- Etiketleme bittikten sonra kaydet tuşuna basılır ve dosya_adi_output.json şeklinde etiketlenmiş veri elde edilir.

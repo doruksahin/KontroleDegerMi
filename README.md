@@ -1,16 +1,22 @@
-# KontroleDegerMi
-- Sosyal medyada söz edilen iddiaların, insanlar tarafından kontrol edilmeye değer olup olmayacağını buluyoruz.
+# Kontrole Değer iddiaların Tespiti
+### Detecting Check-Worty Claims
+- Bu araştırma, verilen bir metnin kontrol edilmeye değer olup olmadığı bilgisini bulmak için yapılmış bir çalışmadır. 
+- Günümüzde sosyal medya kullanımının yaygınlaşmasından ve yalan haberlerin artmasından dolayı ortaya atılan iddiaların teyiti gerekmekte ve teyit edilecek metinlerin doğru bir şekilde bulunması gerekmekte olduğundan dolayı, kontrole değer iddiaların tespiti araştırması yapılmıştır. Çalışmada Türkçe için optimize edilmiş doğal dil işleme yöntemleri, öznitelik olarak POS, NER, BOW ve cümle uzunluğu kullanılmış, bu özniteliklerin farklı kombinasyonları 2 farklı denetimli makine öğrenmesi algoritması ile test edilmiş ve sonuçları karşılaştırılmıştır. Böylece Türkçe dilindeki ilk kontrole değer iddiaların tespiti çalışması yapılmıştır. Sonucunda taban çizgimiz olan ClaimBuster araştırmasına yakın bir başarı Türkçe için elde edilmiştir.
 
-- crawl klasöründe veri toplama işini yaptık.  
-- python dogrulaorg.py  
-- python dogrulukpayi.py  
-- python gununyalanlari.py  
-- python malumatfurus.py  
-- python teyitorg.py  
-- komutları çalıştırıldığında output klasörüne çekilen veriler json formatında geliyor.  
-- python arrange.py <DOSYA_FORMATI>  
-- komutu çalıştırıldığında tüm veriler bir araya getirilir. Dosya formatı argümanına göre json veya txt olarak kaydedilir.   
-- python arrange.py "json" çalıştırıldığında claims.json şeklinde bir çıktımız olacaktır.  
+
+## Crawl İşlemi
+```
+python dogrulaorg.py  
+python dogrulukpayi.py  
+python gununyalanlari.py  
+python malumatfurus.py  
+python teyitorg.py
+```
+- Bu komutlar çalıştırıldığında crawl/output klasörüne çekilen veriler json formatında gelmektedir.
+```
+python arrange.py <DOSYA_FORMATI>  
+```
+- Bu komut ile tüm veriler bir araya getirilir. Dosya formatı argümanına göre json veya txt olarak kaydedilir.
 
 
 - pipeline klasöründe preprocessing ve feature extraction için 

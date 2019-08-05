@@ -1,0 +1,7 @@
+Her dil için NLP pipelineları kurulduktan sonra
+
+Teyit.org almanca düşünelim. Bu sitenin verileri ile train edip testi de almanca verileriyle yaparsak sonuç ne olur? Almanca için farklı featurelar mı seçmemiz gerekirdi?
+
+Almanca verilerini translate edip kullansaydık aynı sonucu alacak mıydık?
+
+teyit.orgdan train edilmiş verilerle almanca haberlerin translate edilmiş halinin checkworthy olup olmadığının tespiti. Bu haberlerin checkworthy olduğunu kim belirleyecek? Bir Alman yerine almanca bilen bir Türk olsaydı aynı şey mi olacaktı?

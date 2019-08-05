@@ -1,7 +1,7 @@
 import json
 import sys
 
-filename = "test_input.txt"
+filename = sys.argv[1]
 f = open(filename, "r")
 json_file = json.load(f)
 

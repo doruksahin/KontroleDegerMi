@@ -2,9 +2,9 @@ import urllib.parse
 import json
 import requests
 
-filename = "test_input_translated.json"
+filename = sys.argv[1]
 link = "https://idir.uta.edu/factchecker/score_text/"
-out_filename = "claimbuster_results.json"
+out_filename = sys.argv[2]
 
 
 def makine_kandirmaca(filename):

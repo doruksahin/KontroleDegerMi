@@ -8,6 +8,7 @@ from pprint import pprint
 import json
 import random
 import sys
+import pickle
 
 test_input = sys.argv[1]
 test_feature = sys.argv[2]
@@ -69,8 +70,9 @@ with open(test_feature, "r") as f:
 		mini_test_data = [int(f) for f in line[0].split(",")]
 		test_data.append(mini_test_data)
 		
-model = SVC(kernel='linear', random_state=0, verbose=10000)
+model = SVC(kernel='linear', random_state=0, verbose=10000, probability=True)
 model.fit(train_data, is_claim)
+pickle.dump(model, open("svm_model.sav", "wb"))
 predicted = model.predict(test_data)
 
 #for i, pred in enumerate(predicted):

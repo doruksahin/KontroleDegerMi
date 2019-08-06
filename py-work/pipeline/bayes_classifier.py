@@ -8,6 +8,7 @@ from pprint import pprint
 import json
 import random
 import sys
+import pickle
 
 test_input = sys.argv[1]
 test_feature = sys.argv[2]
@@ -70,6 +71,7 @@ with open(test_feature, "r") as f:
 
 model = GaussianNB()
 model.fit(train_data, is_claim)
+pickle.dump(model, open("bayes_model.sav", "wb"))
 predicted = model.predict(test_data)
 
 #for i, pred in enumerate(predicted):

@@ -1,8 +1,9 @@
 # Kontrole Değer iddiaların Tespiti
 ### Detecting Check-Worty Claims
 - Bu araştırma, verilen bir metnin kontrol edilmeye değer olup olmadığı bilgisini bulmak için yapılmış bir çalışmadır. 
-- Günümüzde sosyal medya kullanımının yaygınlaşmasından ve yalan haberlerin artmasından dolayı ortaya atılan iddiaların teyiti gerekmekte ve teyit edilecek metinlerin doğru bir şekilde bulunması gerekmekte olduğundan dolayı, kontrole değer iddiaların tespiti araştırması yapılmıştır. Çalışmada Türkçe için optimize edilmiş doğal dil işleme yöntemleri, öznitelik olarak POS, NER, BOW ve cümle uzunluğu kullanılmış, bu özniteliklerin farklı kombinasyonları 2 farklı denetimli makine öğrenmesi algoritması ile test edilmiş ve sonuçları karşılaştırılmıştır. Böylece Türkçe dilindeki ilk kontrole değer iddiaların tespiti çalışması yapılmıştır. Sonucunda taban çizgimiz olan ClaimBuster araştırmasına yakın bir başarı Türkçe için elde edilmiştir.
-
+- Günümüzde sosyal medya kullanımının yaygınlaşmasından ve yalan haberlerin artmasından dolayı ortaya atılan iddiaların teyiti gerekmekte ve teyit edilecek metinlerin doğru bir şekilde bulunması gerekmekte olduğundan dolayı, kontrole değer iddiaların tespiti araştırması yapılmıştır. Çalışmada Türkçe için optimize edilmiş doğal dil işleme yöntemleri, öznitelik olarak POS, NER, BOW ve cümle uzunluğu kullanılmış, bu özniteliklerin farklı kombinasyonları 2 farklı denetimli makine öğrenmesi algoritması ile test edilmiş ve sonuçları karşılaştırılmıştır. Böylece Türkçe dilindeki ilk kontrole değer iddiaların tespiti çalışması yapılmıştır. Sonucunda taban çizgimiz olan ClaimBuster araştırmasına yakın bir başarı Türkçe için elde edilmiştir.  
+  
+(Python version: 3)
 
 ## Crawl İşlemi
 ```
@@ -37,7 +38,7 @@ python main.py "extract-feature" train_out.json train_feature_non_claim.csv
 
 #### Bayes Classifier
 ```
-python bayes_classifier.py test_input.json test_feature.csv expected.json train_feature_claim.csv train_feature_non_claim.csv  
+python bayes_classifier.py test_input.json test_feature.csv expected.json train_feature_claim.csv train_feature_not_claim.csv  
 ```
 
 #### Baseline Karşılaştırması İçin Çeviri İşlemi
@@ -63,3 +64,9 @@ python gui.py <DOSYA_ADI>
 - mark-nonworthy klasöründe ilk komut çalıştığında dosya "ali.json", "said.json", "doruk.json" olarak üçe bölünüyor.
 - İkinci komut ile etiketleme arayüzü açılmaktadır.
 - Etiketleme bittikten sonra kaydet tuşuna basılır ve dosya_adi_output.json şeklinde etiketlenmiş veri elde edilir.
+
+#### Önceden Eğitilmiş Model Çalıştırma
+- SVM (Length + POS + NER) modelini test etmek için:
+```
+python pretrained.py
+```

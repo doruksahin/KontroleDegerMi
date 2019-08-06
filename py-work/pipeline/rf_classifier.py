@@ -7,6 +7,7 @@ from sklearn.svm import SVC
 from pprint import pprint
 import json
 import random
+import pickle
 
 # for testing
 with open("test_input.json", "r") as f:
@@ -63,6 +64,7 @@ with open("test_feature.csv", "r") as f:
 
 model = RandomForestRegressor(n_estimators = 1000, random_state = 42, verbose=100000)
 model.fit(train_data, is_claim)
+pickle.dump(model, open("rf_model.sav", "wb"))
 predicted = model.predict(test_data)
 
 #for i, pred in enumerate(predicted):
